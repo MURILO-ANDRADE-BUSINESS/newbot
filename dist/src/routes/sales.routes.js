@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.webhooksRoutes = void 0;
+const express_1 = require("express");
+// import { FindUserByEmailController } from '../modules/user/useCases/findByEmail/findUserByEmailController';
+// import { ListUserController } from '../modules/user/useCases/listUsers/listUserController';
+const EduzzController_1 = require("../modules/webhooks/useCases/Eduzz/EduzzController");
+const findSalesByUserController_1 = require("../modules/webhooks/useCases/findSalesByUser/findSalesByUserController");
+const webhooksRoutes = (0, express_1.Router)();
+exports.webhooksRoutes = webhooksRoutes;
+const findSalesByUserController = new findSalesByUserController_1.FindSalesByUserController();
+const createEduzzController = new EduzzController_1.CreateEduzzController();
+// const listUserController = new ListUserController();
+webhooksRoutes.post('/eduzz', createEduzzController.handle);
+webhooksRoutes.get('/sales/:id', findSalesByUserController.handle);

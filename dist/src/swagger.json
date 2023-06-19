@@ -1,0 +1,144 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Recomendation App Documentation",
+        "decription": "Aplicação para app de recomendação e viraçização de campanha",
+        "version": "1.0",
+        "contact": {
+            "email": "andrademurilo03@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "sumary": "Criando novo usário",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "exemple": {
+                                    "name": "test",
+                                    "email": "teste@test.com",
+                                    "phone": "71991580344"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": { "description": "ok" },
+                    "500": { "description": "usuário já cadastrado" }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "sumary": "Buscando todos os usuários",
+                "responses": {
+                    "201": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "itens": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "sponsor": {
+                                                "type": "string"
+                                            },
+                                            "recommendations": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": { "description": "usuário já cadastrado" }
+                }
+            }
+        },
+        "/find": {
+            "get": {
+                "tags": ["Find User"],
+                "sumary": "Buscando dados do usuário",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "exemple": {
+                                    "email": "teste@test.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "phone": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "sponsor": {
+                                            "type": "string"
+                                        },
+                                        "recommendations": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": { "description": "usuário já cadastrado" }
+                }
+            }
+        }
+    }
+}
